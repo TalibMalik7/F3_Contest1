@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Employees</title>
+</head>
+<style>
+    *{
+    background-color: black;
+    color: white;
+}
+.outer{
+    margin: 30px 20px;
+}
+
+input{
+    margin: 10px 0px;
+    border: 1px white solid;
+    border-radius: 3px;
+    width: 100%;
+}
+.inp{
+    width: 100%;
+    margin-right: 10px;
+}
+.upper{
+    display: flex;
+}
+#add_user{
+    margin-top: 10px;
+    background-color: white;
+    color: black;
+    padding: 10px 25px;
+}
+.user{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid white;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 50%;
+}
+.error_msg{
+    color: red;
+    margin-top: 10px;
+    display: none;
+}
+.success_msg{
+    color: rgb(16, 255, 16);
+    margin-top: 10px;
+    display: none;
+}
+.delete_user{
+    border-radius: 20px;
+    background-color: white;
+    color: black;
+}
+
+</style>
+<body>
+    <body>
+        <div class="outer">
+            <h2>New Employees</h2>
+            <div class="upper">
+                <div class="inp">
+                    <label for="name">Enter Name</label><br>
+                    <input type="text" id="name">
+                </div>
+                <div class="inp">
+                    <label for="profession">Enter Profession</label><br>
+                    <input type="text" id="profession">
+                </div>
+                <div class="inp">
+                    <label for="name">Enter Age</label><br>
+                    <input type="text" id="age">
+                </div>
+            </div>
+            <button id="add_user">Add User</button>
+            <div class="error_msg">Fill all fields before adding</div>
+            <div class="success_msg">Succesfully Added</div>
+            <h2>Added Employees</h2>
+       <div class="container">
+        
+           
+          
+       </div>
+        </div>
+        
+       
+    </body>
+    <script>
+        const add_button = document.getElementById("add_user");
+
+add_button.addEventListener("click", add);
+
+function add(){
+    let container = document.getElementsByClassName("container")[0];
+    let user  = document.createElement("div");
+    let num = container.children.length+1;
+    let name = document.getElementById("name").value;
+    let prof = document.getElementById("profession").value;
+    let age = document.getElementById("age").value;
+    user.className= "user";
+    user.innerHTML = `
+    <div class="no">
+    ${num}.
+    </div>
+   <div class="name_user">
+    Name : ${name}
+   </div>
+   <div class="profession_user">
+    Profession : ${prof}
+   </div>
+   <div class="age_user">
+    Age : ${age}
+   </div>
+   <button class="delete_user" onclick="del()">Delete User</button>
+    `;
+    container.append(user);
+}
+
+
+
+function del(){
+    event.target.parentElement.remove();
+}
+
+
+    </script>
+</body>
+</html>
